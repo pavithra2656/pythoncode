@@ -1,0 +1,94 @@
+Create a match case in a loop having cases 1.create account, 2.login, 3.logout, 4.delete account, 5.exit the loop 
+
+if the case is 1: then create a class to create a new account of the user asking user to enter
+ name, email, password,role .
+whenever the case 1 is entered then store that all new account details in a new file named as "account.txt"
+if the account already exists then show that account already exists.
+
+If it's case 2 : then create a class to login the account by asking name,email,role
+if role is employee then user can't access higher level roles manager,ceo even other accounts of employees,
+if role is manager then he can access employees accounts not ceo account or other manager account,
+if role is ceo he can access all accounts
+create some 60-70 dummy files having data 
+if the role is employee then he can access limited number of files
+if the role is manager then average number of files can be accessed.
+if the role is ceo the he can access all files
+
+if the case is 3:then display the files accessed according to the roles
+if the role is employee then display login time,logout time,date
+if the role is manager then display login time,logout time,date and also the files that employee and manager accessed
+if the role is ceo then display login time,logout time,date and also the files that employee , manager and ceo accessed
+
+if the case is 4:then ask the user to enter email and password then delete that account in file
+
+
+
+
+
+
+code explanation
+User Class:
+The User class represents a user of the system. It has attributes such as name,
+ email, password, role, and login_time.
+The constructor __init__ initializes these attributes when a new user object is created.
+
+AccountManager Class:
+The AccountManager class manages user accounts.
+It initializes with an empty dictionary users to store user objects, 
+with email addresses as keys for faster lookup.
+
+create_account Method:
+This method prompts the user to input details like name, email, password, and role to create a new account.
+It checks if the email is already in use. If yes, it prints a message indicating that the account already exists.
+If the email is not in use, it creates a new User object with the provided details,
+ adds it to the users dictionary, and appends the account details to the "accounts.txt" file.
+
+login Method:
+This method allows users to log in by providing their email and password.
+It checks if the provided email and password match an existing user's credentials.
+If the credentials are correct, it updates the user's login_time attribute with the current time and 
+returns the corresponding user object.
+If the credentials are incorrect, it prints a message indicating invalid credentials.
+
+logout Method:
+This method logs out the user by resetting the login_time attribute to None.
+It also prints the login and logout times, along with a farewell message.
+
+delete_account Method:
+This method allows users to delete their account by providing their email and password.
+It checks if the provided email and password match an existing user's credentials.
+If the credentials are correct, it removes the user from the users dictionary and updates the "accounts.txt" file
+ by removing the corresponding line.
+If the credentials are incorrect or the account does not exist, it prints a message indicating the issue.
+
+_update_accounts_file Method:
+This method is a helper method used by delete_account to update the "accounts.txt" file.
+It reads all lines from the file, skips the line corresponding to the deleted user, 
+and writes the remaining lines back to the file.
+
+main Function:
+The main function is the entry point of the program.
+It creates an instance of the AccountManager class and initializes a variable logged_in_user to keep track of the currently logged-in user.
+It presents a menu to the user with options to create an account, login, logout, delete an account, or exit the program.
+Depending on the user's choice, it calls the respective methods of the AccountManager class to perform the desired actions.
+
+
+
+
+Pros:
+
+Enhanced Security: UAC systems help prevent unauthorized access to sensitive data and resources by enforcing access control policies based on user roles, permissions, and authentication mechanisms.
+Granular Control: They allow administrators to define fine-grained access control policies, granting users access only to the resources they need to perform their job functions, which minimizes the risk of data breaches and insider threats.
+Compliance: UAC systems assist organizations in meeting regulatory compliance requirements by ensuring that access to sensitive information is restricted and auditable. This is particularly crucial in industries with strict data protection regulations, such as healthcare and finance.
+Centralized Management: They provide a centralized platform for managing user accounts, roles, and permissions, simplifying administration tasks and reducing the likelihood of errors or inconsistencies in access control policies.
+Scalability: UAC systems can scale to accommodate the growing needs of an organization, allowing for the addition of new users, resources, and access control rules without significant overhead.
+Auditability: They offer robust auditing and logging capabilities, allowing organizations to track user access events, monitor compliance with access control policies, and investigate security incidents or policy violations.
+
+Cons:
+
+Complexity: Implementing and managing a UAC system can be complex, requiring careful planning, configuration, and ongoing maintenance. This complexity can increase the risk of misconfigurations or errors that may compromise security.
+User Experience Impact: Strict access control policies may inconvenience users by requiring them to go through additional authentication steps or by restricting their access to certain resources. Poorly designed access control mechanisms can impede productivity and frustrate users.
+Cost: UAC systems often require investment in software licenses, hardware infrastructure, and ongoing maintenance and support, which can be costly for organizations, especially small businesses or non-profit organizations with limited budgets.
+Single Point of Failure: A centralized UAC system represents a single point of failure, and any disruption or compromise to the system could potentially result in widespread access issues or security breaches across the organization.
+Overhead: The enforcement of access control policies can introduce overhead, particularly in terms of computational resources and network bandwidth, which may impact system performance, especially during peak usage periods.
+User Resistance: Users may resist the implementation of stringent access control policies if they perceive them as overly restrictive or burdensome. Resistance from users can undermine the effectiveness of the access control system and lead to compliance issues.
